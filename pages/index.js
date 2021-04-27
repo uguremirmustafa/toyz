@@ -8,7 +8,9 @@ export default function index({ products }) {
       {products.map((item) => (
         <div key={item.id}>
           <Link href={`/product/${item.handle}`}>
-            <h2>{item.title}</h2>
+            <a>
+              <h2>{item.title}</h2>
+            </a>
           </Link>
           <img src={item.images[0].src} width={400} />
         </div>
