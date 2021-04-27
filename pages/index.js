@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAllProducts } from '@lib/allProducts';
+import { getAllProducts } from '@lib/shopify';
 import ProductPreviewCard from 'components/ProductPreviewCard';
 export default function index({ products }) {
   return (

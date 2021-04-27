@@ -1,6 +1,5 @@
 import React from 'react';
-import { getAllProducts } from '@lib/allProducts';
-import { getProductByHandle } from '@lib/getProductByHandle';
+import { getAllProducts, getProductByHandle } from '@lib/shopify';
 
 export default function SingleProduct({ product }) {
   console.log(product);
