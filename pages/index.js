@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAllProducts } from '../lib/allProducts';
+import { getAllProducts } from '@lib/allProducts';
 import Link from 'next/link';
 export default function index({ products }) {
   console.log(products);
