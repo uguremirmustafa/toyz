@@ -1,10 +1,11 @@
 import React from 'react';
 import { getAllProducts } from '@lib/allProducts';
 import Link from 'next/link';
+import Image from 'next/image';
 export default function index({ products }) {
   console.log(products);
   return (
-    <div>
+    <div className="home">
       {products.map((item) => (
         <div key={item.id}>
           <Link href={`/product/${item.handle}`}>
@@ -12,7 +13,13 @@ export default function index({ products }) {
               <h2>{item.title}</h2>
             </a>
           </Link>
-          <img src={item.images[0].src} width={400} />
+          <Image
+            src={item.images[0].src}
+            width={600}
+            height={400}
+            objectFit="cover"
+            className="productImage"
+          />
         </div>
       ))}
     </div>

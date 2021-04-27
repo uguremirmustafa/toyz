@@ -9,6 +9,17 @@ export default function Navbar() {
       featured: false,
     },
   ];
-  const navbarLinks = routes.map((item) => <Link href={item.path}>{item.label}</Link>);
-  return <nav>{navbarLinks}</nav>;
+  const navbarLinks = routes.map((item) => (
+    <li>
+      <Link href={item.path}>{item.label}</Link>
+    </li>
+  ));
+  return (
+    <nav className="navbar">
+      <div className="innerNav">
+        <div className="logo">logo</div>
+        <ul>{navbarLinks}</ul>
+      </div>
+    </nav>
+  );
 }
