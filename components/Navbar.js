@@ -10,7 +10,7 @@ export default function Navbar() {
     },
   ];
   const navbarLinks = routes.map((item) => (
-    <li>
+    <li key={item.path}>
       <Link href={item.path}>{item.label}</Link>
     </li>
   ));

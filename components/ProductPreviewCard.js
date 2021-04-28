@@ -1,18 +1,19 @@
-import { createCheckout } from '@lib/shopify';
+import { createCheckout, addItemsToCheckout } from '@lib/shopify';
 import { ShopContext } from 'context/shopContext';
 import Link from 'next/link';
 import React, { useContext } from 'react';
 
 export default function ProductPreviewCard({ product }) {
   const { state, dispatch } = useContext(ShopContext);
-  console.log(state.isCartOpen);
 
-  const addToCart = async () => {
-    let checkoutId = window.localStorage.getItem('checkoutId');
-    if (!checkoutId) {
-      const checkout = createCheckout();
-      checkoutId = window.localStorage.setItem('checkoutId', checkout.id);
-    }
+  const handleCart = async () => {
+    const itemsToAdd = [
+      {
+        variantId: product.variants[0].id,
+        quantity: 1,
+      },
+    ];
+    addItemsToCheckout(state.checkout?.id, itemsToAdd);
   };
 
   return (
@@ -24,11 +25,11 @@ export default function ProductPreviewCard({ product }) {
       </Link>
       <img src={product.images[0].src} className="productImage" />
       <div className="flex">
-        <button className="btn" onClick={() => dispatch({ type: 'TOGGLE_CART' })}>
+        <button className="btn" onClick={() => dispatch({ type: 'OPEN_CART' })}>
           &hearts;
         </button>
         <span className="priceTag">{product.variants[0].price}</span>
-        <button className="btn" onClick={addToCart}>
+        <button className="btn" onClick={handleCart}>
           Add to cart
         </button>
       </div>
