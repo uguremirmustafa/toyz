@@ -1,0 +1,16 @@
+@use '../abstracts' as *;
+.cart {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 400px;
+  background-color: $primary;
+  h3 {
+    color: $light;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid $light;
+  }
+}
