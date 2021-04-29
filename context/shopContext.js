@@ -7,18 +7,18 @@ export const ShopContext = createContext();
 
 export default function ShopProvider({ children }) {
   const [checkout, setCheckout] = useLocalStorageState('shopify-checkout');
+  let initialState = { product: {}, products: [], isCartOpen: false, checkout };
 
   useEffect(() => {
     if (!checkout) {
       const getData = async () => {
         const data = await createCheckout();
         setCheckout(data);
+        initialState = { product: {}, products: [], isCartOpen: false, checkout };
       };
       getData();
     }
   }, [createCheckout]);
-
-  let initialState = { product: {}, products: [], isCartOpen: false, checkout };
 
   const [state, dispatch] = useReducer(reducers, initialState);
 

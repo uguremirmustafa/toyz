@@ -1,4 +1,4 @@
-import { createCheckout, addItemsToCheckout } from '@lib/shopify';
+import { addItemsToCheckout } from '@lib/shopify';
 import { ShopContext } from 'context/shopContext';
 import Link from 'next/link';
 import React, { useContext } from 'react';

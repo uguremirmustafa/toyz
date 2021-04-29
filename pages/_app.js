@@ -4,11 +4,11 @@ import '../styles/main.scss';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <ShopProvider>
+    <ShopProvider>
+      <Layout>
         <Component {...pageProps} />
-      </ShopProvider>
-    </Layout>
+      </Layout>
+    </ShopProvider>
   );
 }
 
