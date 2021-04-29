@@ -12,6 +12,25 @@ const reducers = (state, action) => {
         ...state,
         isCartOpen: true,
       };
+    case ACTIONS.ADD_ITEM_TO_CART:
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
+      };
+    // case ACTIONS.INCREASE_QUANTITY:
+    //   const updatedItem = state.cart.filter((item) => item.id === action.payload.id);
+    //   console.log(updatedItem);
+    //   return {
+    //     ...state,
+    //     cart: [...state.cart, action.payload],
+    //   };
+
+    case ACTIONS.REMOVE_ITEM_FROM_CART:
+      const newItems = state.cart.filter((item) => item.id !== action.payload.id);
+      return {
+        ...state,
+        cart: newItems,
+      };
 
     default:
       return state;

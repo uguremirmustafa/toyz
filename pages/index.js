@@ -1,7 +1,13 @@
 import React from 'react';
 import { getAllProducts } from '@lib/shopify';
 import ProductPreviewCard from 'components/ProductPreviewCard';
-export default function index({ products }) {
+import useSWR from 'swr';
+export default function index({ initialProducts }) {
+  const { data: products } = useSWR('allProducts', getAllProducts(), {
+    initialData: initialProducts,
+    revalidateOnFocus: true,
+  });
+
   return (
     <div className="home">
       {products.map((item) => (
@@ -13,9 +19,10 @@ export default function index({ products }) {
 
 export async function getStaticProps() {
   const products = await getAllProducts();
+
   return {
     props: {
-      products: JSON.parse(JSON.stringify(products)),
+      initialProducts: products,
     },
   };
 }

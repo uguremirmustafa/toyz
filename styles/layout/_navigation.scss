@@ -6,6 +6,13 @@
   background-color: $light;
   .innerNav {
     @include flex-bw;
+    .logo {
+      display: flex;
+      align-items: center;
+      span {
+        margin-left: 1rem;
+      }
+    }
     ul {
       display: flex;
       gap: 1rem;

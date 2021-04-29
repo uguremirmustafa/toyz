@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ShopContext } from 'context/shopContext';
-
+import client, { gql } from '@lib/client';
+import useSWR from 'swr';
+import CartItem from './CartItem';
 export default function Cart() {
   const {
-    state: { isCartOpen },
+    state: { isCartOpen, cart },
     dispatch,
   } = useContext(ShopContext);
   const toggleCart = () => {
@@ -13,6 +15,7 @@ export default function Cart() {
       dispatch({ type: 'CLOSE_CART' });
     }
   };
+
   return (
     <div className={`cart ${isCartOpen ? 'cartOpen' : 'cartClose'}`}>
       <div className="titleBar">
@@ -23,6 +26,11 @@ export default function Cart() {
           </svg>
         </div>
         <h3>Your Cart</h3>
+      </div>
+      <div className="cartItems">
+        {cart?.map((item) => (
+          <CartItem item={item} />
+        ))}
       </div>
     </div>
   );
