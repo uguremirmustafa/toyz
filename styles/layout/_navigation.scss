@@ -20,5 +20,12 @@
     @include media($mobile) {
       margin: 0 $sideMarginMobile;
     }
+    .cartLogo {
+      fill: $primary;
+      cursor: pointer;
+      &:hover {
+        fill: $dark;
+      }
+    }
   }
 }
