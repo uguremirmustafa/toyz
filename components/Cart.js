@@ -32,6 +32,9 @@ export default function Cart() {
           <CartItem item={item} />
         ))}
       </div>
+      <div className="checkout">
+        <button className="btn">checkout</button>
+      </div>
     </div>
   );
 }
