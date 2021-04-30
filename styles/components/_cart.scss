@@ -68,6 +68,10 @@
       }
     }
   }
+  .checkout {
+    display: flex;
+    justify-content: center;
+  }
 }
 .cartOpen {
   transform: translateX(0);
